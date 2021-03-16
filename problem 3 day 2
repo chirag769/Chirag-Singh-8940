@@ -1,0 +1,33 @@
+Node* sortLL(Node* head) 
+{
+    Node* temp = head, *ans = head;
+    int countZero = 0, countOne = 0, countTwo = 0;
+    while (head != NULL) {
+        if(head->data == 0) {
+            countZero++;
+        } 
+        else if(head->data == 1) {
+            countOne++;
+        } 
+        else {
+            countTwo++;
+        }
+        head = head->next;
+    }
+    while(temp != NULL) {
+        if(countZero != 0) {
+            temp->data = 0;
+            countZero--;
+        }
+        else if(countOne != 0) {
+            temp->data = 1;
+            countOne--;
+        }
+        else {
+            temp->data = 2;
+            countTwo--;
+        }
+        temp = temp->next;
+    }
+    return ans;
+}
